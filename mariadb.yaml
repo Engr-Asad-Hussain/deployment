@@ -1,0 +1,17 @@
+version: '3'
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=auxin123
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+
+
+volumes:
+  DB_DATA:
+    driver: local
