@@ -1,6 +1,5 @@
 # Deployment Service
-Protected Services (PS) Backend (BE) template - Shows good practices. 
-A REST API to ......
+Protected Services (PS) Backend (BE) template. Mariadb as database deployment in using docker container.
 
 ## Contents
 - [MariaDB Deployment](#mariadb-deployment)
