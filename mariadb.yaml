@@ -12,6 +12,6 @@ services:
       - 3306:3306
 
 
-volumes:
-  DB_DATA:
-    driver: local
+# volumes:
+#  DB_DATA:
+#    driver: local
