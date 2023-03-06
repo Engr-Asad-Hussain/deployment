@@ -3,6 +3,8 @@ services:
   mariadb:
     image: mariadb
     container_name: mariadb
+    networks:
+      - comm_network
     environment:
       - MYSQL_USER=admin
       - MYSQL_PASSWORD=admin
@@ -12,6 +14,11 @@ services:
       - 3306:3306
 
 
-volumes:
-  DB_DATA:
-    driver: local
+networks:
+  comm_network:
+    name: mariadb_database
+
+
+# volumes:
+#   DB_DATA:
+#     driver: local
