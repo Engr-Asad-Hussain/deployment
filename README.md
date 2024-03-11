@@ -1,20 +1,26 @@
-## Run the redis and redis-cli
-1. Start the redis container
+# Deployment Service
+Protected Services (PS) Backend (BE) template. Mariadb as database deployment in using docker container.
+
+## Contents
+- [MariaDB Deployment](#mariadb-deployment)
+- [Login Credentials](#login-credentials)
+
+
+## MariaDB Deployment
+- Run the ```mariadb.yaml``` docker-compose file.
 ```bash
-docker-compose up -d
+$ docker-compose --file "D:\protected_resources\deployment\mariadb.yaml" up -d
 ```
 
-2. Connect to the redis container via cli
+- Stop and destroy the creat docker container.
 ```bash
-docker run -it --rm --network redis-network redis:poc redis-cli -h redis-container
+$ docker-compose --file "D:\protected_resources\deployment\mariadb.yaml" down
 ```
 
-3. Remove docker container and associated volume
-```bash
-docker-compose down -v
-```
+## Login Credentials
+- The credentials for the normal user is:
+```{"username": "{username}", "password": "{password}"}```.
+This user don't have permissions to do certain actions, in order to give permissions login as root user and give permissions.
 
-4. Clean everything
-```bash
-docker-compose down -v; docker rmi redis:poc
-```
+- The credentials for the root user, having all the privileges:
+```{"username": "root", "password": "root"}```
