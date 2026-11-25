@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0.44
+    container_name: mysql_8044
+    networks:
+      - comm_network
+    environment:
+      - MYSQL_USER=admin
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database_mysql_8044:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      timeout: 20s
+      retrues: 3
+
+networks:
+  comm_network:
+    name: mysql_8044
+
+# NOTE:
+# When you setup MySQL for the first time, you will encounter "Public Key Retrieval is not allowed"
+# error when you connect via DBeaver. Use: https://stackoverflow.com/questions/50379839/connection-java-mysql-public-key-retrieval-is-not-allowed
+# to fixed it for the first time then it wouldn't required for subsequent connects. 
+# Query Parameter: allowPublicKeyRetrieval=true
